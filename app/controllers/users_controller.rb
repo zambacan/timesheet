@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user=User.new(params[:user])
     if @user.save
       # handle a successful save
+      sign_in @user
        flash[:success] = "Welcome to the Swashfly Invoice System!"
       redirect_to @user
     else
