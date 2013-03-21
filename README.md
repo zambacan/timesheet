@@ -1,4 +1,4 @@
-== Andrew and Raife's Swashfly Timesheeting app
+== Raife's Swashfly Timesheeting app
 
 
 
