@@ -12,6 +12,7 @@
 #  default_billing_unit :string(255)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  postcode             :string(255)
 #
 
 require 'spec_helper'

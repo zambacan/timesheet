@@ -12,16 +12,19 @@
 #  default_billing_unit :string(255)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  postcode             :string(255)
 #
 
 class Client < ActiveRecord::Base
-  attr_accessible :address, :city, :default_billing_rate, :default_billing_unit, :name, :phone, :state
+  default_scope  order('name ASC')
+  attr_accessible :address, :city, :default_billing_rate, :default_billing_unit, :name, :phone, :state, :postcode
 
 validates :name, presence: true, length: { maximum: 50 }
+# , uniqueness: true
 validates :address, presence: true, length: { maximum: 50 }
 validates :city, presence: true, length: { maximum: 50 }
 validates :postcode, presence: true, length: { maximum: 10 }
-validates :state, presence: true, length: { maximum: 3 }
+validates :state, presence: true, length: { maximum: 20 }
 
 # VALID_PHONE_REGEX = ^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
 # i need to think about validation of phone numbers, but this introduces the much broader question

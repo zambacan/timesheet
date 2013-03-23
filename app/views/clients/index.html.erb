@@ -1,0 +1,25 @@
+<% provide(:title, 'All clients') %>
+
+
+
+
+
+
+<div class="container">
+<div class="span6">
+ 	<h1>Clients</h1>
+<%= will_paginate %>
+
+    
+
+	<ul class="clients">
+		<% @clients.each do |client| %>
+		<li>
+			<%= link_to client.name, "#" %>
+		</li>
+		<% end %>
+	</ul>
+	
+<%= will_paginate %>
+    </div>
+    </div>
