@@ -2,24 +2,28 @@
 
 
 
-
-
-
 <div class="container">
-<div class="span6">
- 	<h1>Clients</h1>
-<%= will_paginate %>
-
-    
-
-	<ul class="clients">
-		<% @clients.each do |client| %>
-		<li>
-			<%= link_to client.name, "#" %>
-		</li>
+	<div class="span6">
+		<h1>Clients</h1>
+		<%= form_tag clients_path, :method => 'get', :id => "clients_search" do %>
+		<p>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+			
+		</p>
 		<% end %>
-	</ul>
-	
-<%= will_paginate %>
-    </div>
-    </div>
+		<%= will_paginate %>
+
+		<ul class="clients">
+			<% @clients.each do |client| %>
+			<li>
+				<%= link_to client.name, "#" %>
+			</li>
+			<% end %>
+		</ul>
+
+		<%= will_paginate %>
+
+
+	</div>
+</div>
