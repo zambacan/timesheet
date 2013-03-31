@@ -66,6 +66,8 @@ GEM
       i18n (~> 0.4)
     ffi (1.4.0)
     growl (1.0.3)
+    growl_notify (0.0.3)
+      rb-appscript
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -120,6 +122,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
+    rb-appscript (0.6.1)
     rb-fsevent (0.9.1)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -180,7 +183,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)
-  growl (= 1.0.3)
+  growl
+  growl_notify
   guard-rspec (= 1.2.1)
   jquery-rails
   pg (= 0.12.2)

@@ -1,6 +1,11 @@
 <% provide(:title, 'All clients') %>
 
+<ul class="breadcrumb">
+ <li><%= link_to "Home", root_path  %><span class="divider">/</span></li>
 
+<li class="active">Clients</li>
+ 
+</ul>
 
 <div class="container">
 	<div class="span6">
@@ -12,12 +17,11 @@
 			
 		</p>
 		<% end %>
-		<%= will_paginate %>
 
 		<ul class="clients">
 			<% @clients.each do |client| %>
 			<li>
-				<%= link_to client.name, "#" %>
+				<%= link_to client.name, client  %>
 			</li>
 			<% end %>
 		</ul>

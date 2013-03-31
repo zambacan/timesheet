@@ -36,7 +36,9 @@ end
 group :test do
   gem 'capybara', '1.1.2'
   gem 'rb-fsevent', '0.9.1', :require => false
-  gem 'growl', '1.0.3'
+   # gem 'growl', '1.0.3'
+  gem 'growl'
+  gem 'growl_notify'
   gem 'factory_girl_rails', '4.1.0'
 end
 
