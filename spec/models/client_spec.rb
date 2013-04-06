@@ -28,6 +28,7 @@ describe Client do
   it { should respond_to(:phone) }
   it { should respond_to(:default_billing_rate) }
   it { should respond_to(:default_billing_unit) }
+  it { should respond_to(:contacts) }
   it { should be_valid }
 
   describe "when client name is missing" do

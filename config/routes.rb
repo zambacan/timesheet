@@ -2,6 +2,7 @@ Timesheet::Application.routes.draw do
   # get "users/new"
  resources :users
  resources :clients
+ # resources :contacts
  resources :sessions, only: [:new, :create, :destroy]
   root  to: "static_pages#home"
 

@@ -2,11 +2,11 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     Client.create!(name: "IBM",
-                 address: "123 Main St",
-                 city: "Seatle",
-                 state: "VIC",
-                 postcode: "3024",
-                 phone: "0711113333")
+    address: "123 Main St",
+    city: "Seatle",
+    state: "VIC",
+    postcode: "3024",
+    phone: "0711113333")
     99.times do |n|
       name  = Faker::Name.name
       address  = Faker::Address.street_address
@@ -15,11 +15,31 @@ namespace :db do
       postcode  = Faker::Address.uk_postcode
       phone  = Faker::PhoneNumber.phone_number
       Client.create!(name: name,
-                   address: address,
-                   city: city,
-                   state: state,
-                   postcode: postcode,
-                   phone: phone)
+      address: address,
+      city: city,
+      state: state,
+      postcode: postcode,
+      phone: phone)
+end
+clients=Client.all(limit: 5)
+
+          10.times do 
+            #
+           first_name   =Faker::Name.first_name  
+           last_name   =Faker::Name.last_name  
+           phone   =Faker::PhoneNumber.phone_number  
+           email   =Faker::Internet.email  
+           clients.each { |client | client.contacts.create!(first_name: first_name, last_name: last_name, phone: phone, email: email)}
+           # invoice_contact :boolean          default(FALSE)
+
+
     end
   end
 end
+
+
+
+# end
+
+# clients=Client.all(limit: 5)
+
