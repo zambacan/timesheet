@@ -1,0 +1,33 @@
+<% content_for :main_navigation do%>
+<nav>
+	<ul class="nav pull-right">
+		<%= nav_tab  "Home", root_path, current: current_tab %>
+		<%= nav_tab  "About", about_path, current: current_tab %>
+		<% if signed_in? %>
+		<%= nav_tab  "Clients", clients_path, current: current_tab %>
+
+		<li id="fat-menu" class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				Account <b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+
+				<%= nav_tab  "Profile", current_user, current: current_tab %>
+				<%= nav_tab  "Settings", edit_user_path(current_user), current: current_tab %>
+
+				<li class="divider"></li>
+				<li>
+				 <%= link_to  "Sign out", signout_path,   method: 'delete' %>
+
+
+
+				</li>
+			</ul>
+		</li>
+		<% else %>
+		<%= nav_tab  "Sign in", signin_path, current: current_tab %>
+
+		<% end %>
+	</ul>
+</nav>
+<% end %>

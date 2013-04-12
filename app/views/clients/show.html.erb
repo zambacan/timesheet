@@ -1,51 +1,53 @@
-<% provide(:title, "Client details")  %>
-<ul class="breadcrumb">
-	<li><%= link_to "Home", root_path  %><span class="divider">/</span></li>
-	<li><%= link_to "Clients", clients_path  %><span class="divider">/</span></li>
-	<li class="active"><%= @client.name %> </li>
+<div><h2><%= @client.name%> <h2></div>
+<%= currently_at 'Client' %>
+	<% content_for :sidebar do %> <section id='assigned_designers'>
 
-</ul>
+	<header><h1>Assigned Designers</h1></header> <ul>
+	            <%= render @client.contacts %>
+	          </ul>
+	        </section>
+	<% end %>
+	      <article>
+	        <header>
 
-<div class="row-fluid">
-	<div><h1><%= @client.name%> <h1></div>
+	<!-- Project information -->
+	</article>
 
+	<ul class="nav nav-pills">
+		<li class="<%= 'active' if params[:tab] == 'tab1' || !params[:tab] %>"><a href="#tab1" data-toggle="tab">Details</a></li>
+		<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab2" data-toggle="tab">Contacts</a></li>
+		<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab3" data-toggle="tab">Projects</a></li>
+		<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab4" data-toggle="tab">Invoices</a></li>
+	</ul>
 
+	<div class="tab-content">
+		<div class="<%= if (params[:tab] == 'tab1' || !params[:tab]) then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
+			<%= render 'client_detail' %>
 
-		<ul class="nav nav-pills">
-			<li class="<%= 'active' if params[:tab] == 'tab1' || !params[:tab] %>"><a href="#tab1" data-toggle="tab">Details</a></li>
-			<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab2" data-toggle="tab">Contacts</a></li>
-			<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab3" data-toggle="tab">Projects</a></li>
-			<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab4" data-toggle="tab">Invoices</a></li>
-		</ul>
+		</div>
+		<div class="<%= if params[:tab] == 'tab2' then 'tab-pane active'  else 'tab-pane' end%>" id="tab2">
+			<div class="span8">
+				<% if @client.contacts.any? %>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
 
-		<div class="tab-content">
-			<div class="<%= if (params[:tab] == 'tab1' || !params[:tab]) then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
-				<%= render 'client_detail' %>
+						</tr>
+					</thead>
+					<%= render @contacts %>
+				
 					
+
+				</table>
+				<% end %>
+
 			</div>
-			<div class="<%= if params[:tab] == 'tab2' then 'tab-pane active'  else 'tab-pane' end%>" id="tab2">
-					<div class="span8">
-						<% if @client.contacts.any? %>
-						<table class="table table-striped">
-						  <thead>
-						    <tr>
-						      <th>Name</th>
-						      <th>Email</th>
-						      <th>Phone</th>
+				
+		</div>
 
-						    </tr>
-						  </thead>
-							<%= render @contacts %>
+	
 
-						</table>
-						<% end %>
-					</div>
-			</div>
-			<div class="<%= if params[:tab] == 'tab3' then 'tab-pane active'  else 'tab-pane' end%>" id="tab3">
-			</div>
-
-			<div class="<%= if params[:tab] == 'tab3' then 'tab-pane active'  else 'tab-pane' end%>" id="tab4">
-			</div>
-
-</div>
-
+	</div>

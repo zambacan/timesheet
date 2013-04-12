@@ -10,14 +10,34 @@
 </head>
 <body>
 	<%= render 'layouts/header' %>
-	
+
 	<div class="container">
-		<% flash.each do |key, value| %>
+		<div class"row-fluid">
+			<% flash.each do |key, value| %>
 			<div class="alert alert-<%= key %>"><%= value %></div>
-		<% end %>
-		<%= yield %>
+			<% end %>
+		</div>
+		<div class="row-fluid">
+			<div class="span9">
+			
+				<%= yield %>
+			</div>
+			<div class="span3">
+				<section id="sidebar-nav">
+				 <header><h4 class="ir" id="recent">Sidebar navigation</h4></header>
+				<!--
+				sidebar content	
+				-->	
+			<%= yield :sidebar %> 
+		
+		</div>
+
+	</div>
+	<div class="row-fluid">
 		<%= render 'layouts/footer' %>
 		<%= debug(params) if Rails.env.development? %>
 	</div>
+</div>
+</div>
 </body>
 </html>

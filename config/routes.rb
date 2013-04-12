@@ -1,13 +1,17 @@
 Timesheet::Application.routes.draw do
   # get "users/new"
  resources :users
- resources :clients
- # resources :contacts
+ resources :clients do
+   resources :contacts
+ end
+
+ # dont quite understand why the following actions are ok but show and destroy cause problems
+ resources :contacts , only: [ :new, :create]
  resources :sessions, only: [:new, :create, :destroy]
   root  to: "static_pages#home"
-
+ match '/home', to: 'static_pages#home'
   match '/about', to: 'static_pages#about'  
-  match '/contact', to: 'static_pages#contact'  
+  match '/contact_us', to: 'static_pages#contact'  
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

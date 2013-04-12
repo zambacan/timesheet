@@ -62,6 +62,16 @@ describe "Authentication" do
       end
 
     end
+    # user must be signed in to create a contact
+    describe "in the contacts controller" do
+      describe "submitting to the create controller" do
+        before { post contacts_path }
+        specify { response.should redirect_to(signin_path) }
+      end
+    end
+    # ==========================================
+    # this is the end of for non-signed-in users
+    # ==========================================
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
