@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(function() {
+	$("#new").click(function(){
+	var button=$('#new');
+		animate_rotation(button);
+		return false;
+	})
+	
+	function animate_rotation(button){button.addClass('one');setTimeout(function(){button.addClass('two');},30)
+	setTimeout(function(){button.addClass('three');},60)
+	setTimeout(function(){button.addClass('four');},90)
+	setTimeout(function(){button.removeClass('one two three four');},120)}
+	
+})
+

@@ -7,7 +7,7 @@ namespace :db do
     state: "VIC",
     postcode: "3024",
     phone: "0711113333")
-    99.times do |n|
+    20.times do |n|
       name  = Faker::Name.name
       address  = Faker::Address.street_address
       city  = Faker::Address.city
@@ -21,9 +21,9 @@ namespace :db do
       postcode: postcode,
       phone: phone)
 end
-clients=Client.all(limit: 5)
+clients=Client.all
 
-          10.times do 
+          5.times do 
             #
            first_name   =Faker::Name.first_name  
            last_name   =Faker::Name.last_name  

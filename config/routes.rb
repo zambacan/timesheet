@@ -12,6 +12,7 @@ Timesheet::Application.routes.draw do
  match '/home', to: 'static_pages#home'
   match '/about', to: 'static_pages#about'  
   match '/contact_us', to: 'static_pages#contact'  
+  match '/test', to: 'static_pages#test'  
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
