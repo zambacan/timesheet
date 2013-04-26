@@ -1,53 +1,25 @@
-<div><h2><%= @client.name%> <h2></div>
+<div><h3>Client: <%= @client.name%> <h3></div>
 <%= currently_at 'Client' %>
-	<% content_for :sidebar do %> <section id='assigned_designers'>
 
-	<header><h1>Assigned Designers</h1></header> <ul>
-	            <%= render @client.contacts %>
-	          </ul>
-	        </section>
+
+
+
+	<%= render 'client_detail' %>
+	<% if @client.contacts.any? %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+
+			</tr>
+		</thead>
+		<%= render @contacts %>
+
+
+
+	</table>
 	<% end %>
-	      <article>
-	        <header>
 
-	<!-- Project information -->
-	</article>
 
-	<ul class="nav nav-pills">
-		<li class="<%= 'active' if params[:tab] == 'tab1' || !params[:tab] %>"><a href="#tab1" data-toggle="tab">Details</a></li>
-		<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab2" data-toggle="tab">Contacts</a></li>
-		<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab3" data-toggle="tab">Projects</a></li>
-		<li class="<%= 'active' if params[:tab] == 'tab2' %>"> <a href="#tab4" data-toggle="tab">Invoices</a></li>
-	</ul>
-
-	<div class="tab-content">
-		<div class="<%= if (params[:tab] == 'tab1' || !params[:tab]) then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
-			<%= render 'client_detail' %>
-
-		</div>
-		<div class="<%= if params[:tab] == 'tab2' then 'tab-pane active'  else 'tab-pane' end%>" id="tab2">
-			<div class="span8">
-				<% if @client.contacts.any? %>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Phone</th>
-
-						</tr>
-					</thead>
-					<%= render @contacts %>
-				
-					
-
-				</table>
-				<% end %>
-
-			</div>
-				
-		</div>
-
-	
-
-	</div>

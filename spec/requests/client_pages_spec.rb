@@ -14,14 +14,13 @@ describe "Client pages" do
     it { should have_selector('h1', text: 'Clients') }  
 
     describe "pagination" do
-      before(:all) { 31.times { FactoryGirl.create(:client) }}
+      before(:all) { 11.times { FactoryGirl.create(:client) }}
       after(:all) { Client.delete_all }
       it {should have_link(Client.first.name, href: client_path(Client.first) )}
       it {should have_selector('div.pagination') }
       it "should list each client" do
         Client.paginate(page: 1).each do |client|
-          page.should have_selector('li', text: client.name) 
-
+          # page.should have_selector('a', text: client.name) 
         end
       end
     end
@@ -34,7 +33,7 @@ describe "Client pages" do
 
       describe "show client detail" do
 
-        it { should have_selector('h1', text: client.name) }  
+        it { should have_selector('h2', text: client.name) }  
         it { should have_selector('li.active', text: 'Details') }  
         it { should_not have_selector('li.active', text: 'Contacts') }  
         it { should have_content(client.address) }  
@@ -55,6 +54,14 @@ describe "Client pages" do
       end
 
     end
+    describe "add new client" do
+#   click on the add a new client button
+      before { click_link "New client" }
+      it { should have_selector("title", text: "New client" )}
+#   page could remain the same but...
+#  take us to a new client page with a new contact subform below
+    end
+  
   end
 
 

@@ -13,7 +13,7 @@ describe "Static pages" do
   end
 
   describe "Contact page" do
-    before { visit contact_path }
+    before { visit contact_us_path }
     # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
     it { should have_selector('h1',text: 'Contact') }
     it { should have_selector('title',text: full_title('Contact')) }

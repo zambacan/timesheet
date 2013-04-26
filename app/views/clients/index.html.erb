@@ -1,15 +1,13 @@
 <% provide(:title, 'All clients') %>
 
 <% content_for :sidebar do %> 
- <ul>
-	<li>
-		<%= link_to "New Client", "#", id: "new" %>
-		<div class="tip" style="display: none;">
-			<div class="left"></div>
-			<div class="right">New Client</div>
-		</div>
-	</li>
-</ul>
+<p>
+  
+ <%= link_to "New client", new_client_path, class: "btn" %>
+  
+</p>
+ 
+
 <% end %>
 
 
@@ -28,11 +26,10 @@
 	<% @clients.each do |client| %>
 	<li>
 		<%= link_to client.name, client  %>
-		<%= link_to client.address, client  %>
+		<%= client.address  %>
 	
-		<% if client.contacts.any? %> 
-			 <%= link_to client.contacts.first.full_name, client  %>
-			<% end %>
+		
+			<%= link_to "Edit", edit_client_path(client) %>
 	</li>
 	<% end %>
 </ul>

@@ -1,0 +1,48 @@
+<% provide(:title, 'Edit client') %>
+<h1>Edit client </h1>
+<%= currently_at 'Clients' %>
+<div class  = "row">
+	<div class = "span6 offset3">
+		<h2><%= @client.contacts.count %></h2>
+		<%= form_for(@client) do |f| %>
+
+
+
+		<%= f.label :name %>
+		<%= f.text_field :name%>
+
+		<%= f.label :address %>
+		<%= f.text_field :address%>
+
+
+		<%= f.label :city %>
+		<%= f.text_field :city %>
+
+
+		<%= f.label :state, "State" %>
+		<%= f.text_field :state %>
+
+		<%= f.label :postcode, "Postcodes" %>
+		<%= f.text_field :postcode %>
+
+
+		<%= f.label :phone %>
+		<%= f.text_field :phone %>
+		
+	  	<%= f.fields_for :contacts do |builder| %>
+		<fieldset>
+			<%= builder.label :first_name, "First name" %>
+			<%= builder.text_field :first_name %>
+			<%= builder.label :last_name, "Last name" %>
+			<%= builder.text_field :last_name %>
+			<%= builder.label :email, "Email" %>
+			<%= builder.text_field :email %>
+		</fieldset>
+		<% end %>
+		
+		<%= f.submit "Update", class: "btn btn-large btn-primary" %>
+		<% end %>
+
+
+	</div>
+</div>

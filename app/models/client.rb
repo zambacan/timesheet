@@ -17,9 +17,9 @@
 
 class Client < ActiveRecord::Base
   default_scope  order('name ASC')
-  attr_accessible :address, :city, :default_billing_rate, :default_billing_unit, :name, :phone, :state, :postcode
+  attr_accessible :address, :city, :default_billing_rate, :default_billing_unit, :name, :phone, :state, :postcode, :contacts_attributes
   has_many :contacts
-  
+  accepts_nested_attributes_for :contacts
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :address, presence: true, length: { maximum: 50 }
   validates :city, presence: true, length: { maximum: 50 }
