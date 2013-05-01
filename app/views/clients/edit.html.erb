@@ -4,7 +4,7 @@
 <div class  = "row">
 	<div class = "span6 offset3">
 		<h2><%= @client.contacts.count %></h2>
-		<%= form_for(@client) do |f| %>
+		<%= nested_form_for(@client) do |f| %>
 
 
 
@@ -30,15 +30,17 @@
 		<%= f.text_field :phone %>
 		
 	  	<%= f.fields_for :contacts do |builder| %>
-		<fieldset>
-			<%= builder.label :first_name, "First name" %>
-			<%= builder.text_field :first_name %>
-			<%= builder.label :last_name, "Last name" %>
-			<%= builder.text_field :last_name %>
-			<%= builder.label :email, "Email" %>
-			<%= builder.text_field :email %>
-		</fieldset>
+			<fieldset>
+				<%= builder.label :first_name, "First name" %>
+				<%= builder.text_field :first_name %>
+				<%= builder.label :last_name, "Last name" %>
+				<%= builder.text_field :last_name %>
+				<%= builder.label :email, "Email" %>
+				<%= builder.text_field :email %>
+				<%= builder.link_to_remove "Remove this contact" %>
+			</fieldset>
 		<% end %>
+		<p><%= f.link_to_add "Add a contact", :contacts %></p>
 		
 		<%= f.submit "Update", class: "btn btn-large btn-primary" %>
 		<% end %>

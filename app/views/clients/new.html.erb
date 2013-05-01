@@ -3,9 +3,7 @@
 <%= currently_at 'Clients' %>
 <div class  = "row">
 	<div class = "span6 offset3">
-		<%= form_for(@client) do |f| %>
-
-
+		<%= nested_form_for(@client) do |f| %>
 
 		<%= f.label :name %>
 		<%= f.text_field :name%>
@@ -29,19 +27,17 @@
 		<%= f.text_field :phone %>
 
 		<%= f.fields_for :contacts do |builder| %>
-		<fieldset id="" class="">
+			<fieldset id="" class="">
 
-			
-			<%= builder.label :first_name, "First Name" %>
-			<%= builder.text_field :first_name %>
-			<%= builder.label :last_name, "Last Name" %>
-			<%= builder.text_field :last_name %>
+				<%= builder.label :first_name, "First Name" %>
+				<%= builder.text_field :first_name %>
+				<%= builder.label :last_name, "Last Name" %>
+				<%= builder.text_field :last_name %>
+				<%= builder.link_to_remove "Remove this contact" %>
 
-
-		</fieldset>
-
+			</fieldset>
 		<% end %>
-
+		<p><%= f.link_to_add "Add a contact", :contacts %></p>
 		<%= f.submit "Add client", class: "btn btn-large btn-primary" %>
 		<% end %>
 
