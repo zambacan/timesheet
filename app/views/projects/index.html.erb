@@ -1,0 +1,10 @@
+<%= provide(:title, "Projects") %>
+<h1>Projects</h1>
+<% currently_at "Clients" %>
+<ul>
+	<% @projects.each do |project| %>
+	<%= project.client.name %>:
+	<%= project.project_name %> - 
+	<%= project.project_description %><br>
+	<% end %>
+</ul>

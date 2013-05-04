@@ -1,0 +1,16 @@
+
+
+<% provide(:title, "Project detail")  %>
+<%= currently_at 'Projects'%>
+<div class="row">
+    <section>
+	<h2>
+        <%= @project.client.name %>: 
+      </h2>
+  
+      <ul>
+
+		<li> <%= @project.project_name %></li>
+		<li> <%= @project.project_description %></li></ul>
+    </section>
+</div>

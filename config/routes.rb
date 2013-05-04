@@ -1,9 +1,9 @@
 Timesheet::Application.routes.draw do
   # get "users/new"
  resources :users
- resources :clients do
+ resources :clients 
    resources :contacts
- end
+ resources :projects
 
  # dont quite understand why the following actions are ok but show and destroy cause problems
  resources :contacts , only: [ :new, :create]
