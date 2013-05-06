@@ -12,6 +12,15 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :active, :client_id, :project_description, :project_name
+  attr_accessible :active, :client_id, :project_description, :project_name, :client_name
   belongs_to :client
+  
+  def client_name
+    client.try(:name)
+    end
+  
+  def client_name=(name)
+    self.client=Client.find_by_name(name) if name.present?
+    
+  end
 end

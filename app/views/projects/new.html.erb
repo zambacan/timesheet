@@ -5,9 +5,11 @@
 	<%= f.text_field :project_description %>
 	<%= f.label :active, "Active Project" %>
 	<%= f.check_box :active %>
-	<%= f.label :Client, "Client" %>
-	<%= f.collection_select(:client_id, Client.order(:name), :id, :name, {include_blank: true} , {:class => "span4"}) %>
-<br>
+	<%= f.label :client_name %>
+
+
+<%= f.text_field :client_name, :autocomplete => :off , :data => {:provide => "typeahead", :source => Client.order(:name).map(&:name) } %>
+
 <%= f.submit "Create Project", :disable_with => 'Submiting...', :class => "btn btn-primary"%>
 <% end %>
 

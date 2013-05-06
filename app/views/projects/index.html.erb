@@ -1,10 +1,25 @@
 <%= provide(:title, "Projects") %>
 <h1>Projects</h1>
 <% currently_at "Clients" %>
-<ul>
+
+<table class="table">
+
+		<thead>
+			<tr>
+				<th>Client</th>
+				<th>Project</th>
+				<th>Description</th>
+				<th>Active</th>
+
+			</tr>
+		</thead>
 	<% @projects.each do |project| %>
-	<%= project.client.name %>:
-	<%= project.project_name %> - 
-	<%= project.project_description %><br>
+	<tr>
+		<td><%= project.client_name %></td>
+		<td><%= project.project_name %> </td>
+		<td><%= project.project_description %></td>
+		<td><%= project.active %></td>
+		   <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
 	<% end %>
-</ul>
+</table>
