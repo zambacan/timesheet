@@ -12,9 +12,12 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :active, :client_id, :project_description, :project_name, :client_name
+  attr_accessible :active, :project_description, :project_name, :client_name
   belongs_to :client
-  
+   validates :project_name, presence: true, length: { maximum: 100}
+   validates :project_description, presence: true, length: { maximum: 250}
+   validates :client_name, presence: true
+   
   def client_name
     client.try(:name)
     end

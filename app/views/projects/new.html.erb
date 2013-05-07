@@ -1,15 +1,18 @@
+<%= provide(:title, "New Project") %>
+<% currently_at "Projects" %>
+<h1>New Project</h1>
 <%= form_for(@project) do |f| %>
-	<%= f.label :project_name, "Project Name" %>
-	<%= f.text_field :project_name %>
-	<%= f.label :project_description, "Description" %>
-	<%= f.text_field :project_description %>
-	<%= f.label :active, "Active Project" %>
-	<%= f.check_box :active %>
+
 	<%= f.label :client_name %>
 
 
 <%= f.text_field :client_name, :autocomplete => :off , :data => {:provide => "typeahead", :source => Client.order(:name).map(&:name) } %>
-
+<%= f.label :project_name, "Project Name" %>
+<%= f.text_field :project_name %>
+<%= f.label :project_description, "Description" %>
+<%= f.text_field :project_description %>
+<%= f.label :active, "Active Project" %>
+<%= f.check_box :active %>
 <%= f.submit "Create Project", :disable_with => 'Submiting...', :class => "btn btn-primary"%>
 <% end %>
 

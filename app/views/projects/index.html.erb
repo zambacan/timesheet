@@ -1,6 +1,15 @@
 <%= provide(:title, "Projects") %>
 <h1>Projects</h1>
-<% currently_at "Clients" %>
+<% currently_at "Projects" %>
+<% content_for :sidebar do %> 
+<p>
+  
+ <%= link_to "New Project", new_project_path, class: "btn" %>
+  
+</p>
+ 
+
+<% end %>
 
 <table class="table">
 
@@ -19,7 +28,7 @@
 		<td><%= project.project_name %> </td>
 		<td><%= project.project_description %></td>
 		<td><%= project.active %></td>
-		   <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		   <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	</tr>
 	<% end %>
 </table>
