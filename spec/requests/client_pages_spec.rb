@@ -32,37 +32,35 @@ describe "Client pages" do
       before   { visit client_path(client) }
 
       describe "show client detail" do
-
-        it { should have_selector('h2', text: client.name) }  
-        it { should have_selector('li.active', text: 'Details') }  
-        it { should_not have_selector('li.active', text: 'Contacts') }  
-        it { should have_content(client.address) }  
-                it { should have_selector("table") }  
-                it { should have_content("Email") }
-                it { should have_content(contact1.full_name) }
-                it { should have_content(contact2.full_name) }
-# the following doesnt work...i assume it is because it all happens after the page has loaded
-# and its just javascript changing the page on the client
-        # describe "contact details" do
-        #          before { click_link "Contacts"}
-        #          it { should_not have_selector('li.active', text: 'Details') }  
-        #          it { should have_selector('li.active', text: 'Contacts') }  
         # 
-        #         end
-        
+        it { should have_selector('title', text: "Client Details") }  
+        it { should have_selector('h3', text: client.name) }  
+      end
+      #        it { should have_selector('li.active', text: 'Details') }  
+      #        it { should_not have_selector('li.active', text: 'Contacts') }  
+      #        it { should have_content(client.address) }  
+      #                it { should have_selector("table") }  
+      #                it { should have_content("Email") }
+      #                it { should have_content(contact1.full_name) }
+      #                it { should have_content(contact2.full_name) }
+      # the following doesnt work...i assume it is because it all happens after the page has loaded
+      # and its just javascript changing the page on the client
+      # describe "contact details" do
+      #          before { click_link "Contacts"}
+      #          it { should_not have_selector('li.active', text: 'Details') }  
+      #          it { should have_selector('li.active', text: 'Contacts') }  
+      # 
 
+
+      describe "add new client" do
+        #   click on the add a new client button
+        before { click_button "New client" }
+        it { should have_selector("title", text: "New client" )}
+        #   page could remain the same but...
+        #  take us to a new client page with a new contact subform below
       end
 
     end
-    describe "add new client" do
-#   click on the add a new client button
-      before { click_link "New client" }
-      it { should have_selector("title", text: "New client" )}
-#   page could remain the same but...
-#  take us to a new client page with a new contact subform below
-    end
-  
-  end
-
 
 end
+  end

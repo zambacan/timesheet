@@ -20,6 +20,8 @@ describe "Authentication" do
       it { should have_selector('title', text: "All clients") }
       it { should have_link('Profile', href: user_path(user)) }
       it { should have_link('Settings', href: edit_user_path(user)) }
+      it { should have_link('Clients', href: clients_path) }
+      it { should have_link('Projects', href: projects_path) }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
       describe "followed by sign out" do
@@ -60,15 +62,15 @@ describe "Authentication" do
           specify { response.should redirect_to(signin_path) }
         end
       end
-
-    end
-    # user must be signed in to create a contact
-    describe "in the contacts controller" do
-      describe "submitting to the create controller" do
-        before { post contacts_path }
-        specify { response.should redirect_to(signin_path) }
+      describe "in the Projects controller" do
+        describe "visiting the index page" do
+          before { visit projects_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+       
       end
     end
+  
     # ==========================================
     # this is the end of for non-signed-in users
     # ==========================================

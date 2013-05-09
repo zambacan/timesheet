@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   # before_filter :signed_in_user, only: [:index, :show, :edit, :update]
-  before_filter :signed_in_user, only: [:index, :show]
+  before_filter :signed_in_user, only: [:index, :new, :show]
 
   def index
     # @clients = Client.search(params[:search]).paginate(page: params[:page])
@@ -13,19 +13,20 @@ class ClientsController < ApplicationController
   def new
     @client=Client.new
     @client.contacts.build 
-    end
+  end
 
   def create
     @client = Client.new(params[:client])
+    
     @client.save
     respond_to do |format|
       if @client.save
-           format.html { redirect_to @client, notice: 'Client was successfully created.' }
-           format.json { render json: @client, status: :created, location: @client }
-         else
-           format.html { render action: "new"}
-           format.json { render json: @client.errors, status: :unprocessable_entity }
-         end
+        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.json { render json: @client, status: :created, location: @client }
+      else
+        format.html { render action: "new"}
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
 

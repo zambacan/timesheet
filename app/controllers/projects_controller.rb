@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+    before_filter :signed_in_user, only: [:index, :new, :show]
+ 
   def show
     @project=Project.find(params[:id])
   end

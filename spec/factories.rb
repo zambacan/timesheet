@@ -28,13 +28,17 @@ FactoryGirl.define do
      phone  "0712345678"
      default_billing_rate "120"
      default_billing_unit "hour"     
+     
    end
- 
- factory :contact do
-    first_name     "Tom"
-     last_name "Jones"
-     email    "tom@jones.com"
-     phone    "03 1234 4343"
-     client
-end
+    factory :contact do
+        first_name     "Tom"
+         last_name "Jones"
+         email    "tom@jones.com"
+         phone    "03 1234 4343"
+         client
+    end
+
+
+
+
 end

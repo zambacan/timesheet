@@ -31,9 +31,19 @@ clients=Client.all
            email   =Faker::Internet.email  
            clients.each { |client | client.contacts.create!(first_name: first_name, last_name: last_name, phone: phone, email: email)}
            # invoice_contact :boolean          default(FALSE)
-
+            project_name   =Faker::Name.first_name  
+            project_description   =Faker::Name.last_name  
+            clients.each { |client | client.projects.create!(project_description: project_description, project_name: project_name)}
+            # invoice_contact :boolean          default(FALSE)
 
     end
+   
+     first_name   =Faker::Name.first_name  
+     last_name   =Faker::Name.last_name  
+     phone   =Faker::PhoneNumber.phone_number  
+     email   =Faker::Internet.email  
+     clients.each { |client | client.contacts.create!(first_name: first_name, last_name: last_name, phone: phone, email: email)}
+     # invoice_contact :boolean          default(FALSE)
   end
 end
 

@@ -14,7 +14,7 @@
 #
 
 class Contact < ActiveRecord::Base
-  attr_accessible  :email, :first_name, :invoice_contact, :last_name, :phone
+  attr_accessible  :email, :first_name, :invoice_contact, :last_name, :phone, :client_id
   validates :client_id, presence: true
   validates :first_name, presence: true, length: { maximum: 50}
   validates :last_name, presence: true, length: { maximum: 50}
