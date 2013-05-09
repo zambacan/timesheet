@@ -52,13 +52,7 @@ describe "Client pages" do
       # 
 
 
-      describe "add new client" do
-        #   click on the add a new client button
-        before { click_button "New client" }
-        it { should have_selector("title", text: "New client" )}
-        #   page could remain the same but...
-        #  take us to a new client page with a new contact subform below
-      end
+     
 
     end
 

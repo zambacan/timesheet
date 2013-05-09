@@ -26,10 +26,7 @@ describe Contact do
   it { should respond_to(:client) }
   its(:client) { should == client} 
   it { should be_valid }
-  describe "without a client_id" do
-    before { @contact.client_id=nil }
-    it { should_not be_valid }
-  end
+  
 
   describe "accessible attributes" do
     it "should not allow access to client_id" do
