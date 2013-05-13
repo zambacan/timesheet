@@ -7,7 +7,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'nested_form'
+ 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
@@ -17,8 +17,8 @@ end
 
 group :development do
  gem 'annotate', '2.5.0'
- gem 'better_errors'
- gem 'binding_of_caller'
+ gem 'better_errors', '0.8.0'
+ gem 'binding_of_caller', '0.7.1'
 end
 
 gem 'pg','0.12.2'
@@ -35,17 +35,21 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   # gem 'uglifier', '>= 1.0.3'
   gem 'uglifier', '>= 1.2.3'
+   gem 'jquery-rails', '2.2.1'
+  gem 'nested_form', '0.3.2'
+  
+ 
 end
 group :test do
   gem 'capybara', '1.1.2'
   gem 'rb-fsevent', '0.9.1', :require => false
    # gem 'growl', '1.0.3'
-  gem 'growl'
-  gem 'growl_notify'
+  gem 'growl', '1.0.3'
+  gem 'growl_notify', '0.0.3'
   gem 'factory_girl_rails', '4.1.0'
 end
 
-gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 

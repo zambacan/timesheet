@@ -184,19 +184,19 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.5.0)
   bcrypt-ruby (= 3.0.1)
-  better_errors
-  binding_of_caller
+  better_errors (= 0.8.0)
+  binding_of_caller (= 0.7.1)
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.2)
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)
-  growl
-  growl_notify
+  growl (= 1.0.3)
+  growl_notify (= 0.0.3)
   guard-rspec (= 1.2.1)
-  jquery-rails
-  nested_form
+  jquery-rails (= 2.2.1)
+  nested_form (= 0.3.2)
   pg (= 0.12.2)
   rails (= 3.2.12)
   rb-fsevent (= 0.9.1)
