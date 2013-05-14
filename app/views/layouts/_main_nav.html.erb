@@ -1,12 +1,13 @@
 <% content_for :main_navigation do%>
 <nav>
 	<ul class="nav pull-right">
-		<%= nav_tab  "Home", root_path, current: current_tab %>
-		<%= nav_tab  "About", about_path, current: current_tab %>
+		
+	
 		<% if signed_in? %>
 		<%= nav_tab  "Clients", clients_path, current: current_tab %>
 		<%= nav_tab  "Projects", projects_path, current: current_tab %>
-
+		<%= nav_tab  "Timesheets", new_hour_path, current: current_tab %>
+		
 		<li id="fat-menu" class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				Account <b class="caret"></b>
@@ -26,6 +27,8 @@
 			</ul>
 		</li>
 		<% else %>
+		<%= nav_tab  "Home", root_path, current: current_tab %>
+		<%= nav_tab  "About", about_path, current: current_tab %>
 		<%= nav_tab  "Sign in", signin_path, current: current_tab %>
 
 		<% end %>

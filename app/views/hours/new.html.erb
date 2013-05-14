@@ -1,0 +1,32 @@
+<%= provide(:title, "New hours") %>
+<% currently_at("Timesheets") %>
+<h1>New hours</h1>
+
+<%= form_for(@hour) do |f| %>
+<div class="span12">
+	<%= f.label :project_name, "Project Name" %>
+
+<%= f.text_field :project_name, :autocomplete => :off , :data => {:provide => "typeahead", :source => Project.order(:project_name).map(&:project_name) } %>
+
+	<%= f.label :activity_type, "Activity Type" %>
+	<%= f.select :activity_type, options_for_select(["Analysis","Business Development","Consulting","Coding","Design", "Documentation", "Meetings", "Testing", "Training"], "Consulting")  %>
+	<%= f.label :description, "Description" %>
+	<%= f.text_field :description %>
+	</div>
+<div class="span4">
+	<%= f.label :performed_on, "Performed On" %>
+	<%= f.text_field :performed_on %>
+	<%= f.label :start_time, "Start Time" %>
+	<%= f.text_field :start_time %>
+	<%= f.label :finish_time, "Finish Time" %>
+	<%= f.text_field :finish_time %>
+
+
+	<%= f.label :billing_unit, "Billing Unit" %>
+	<%= f.select :billing_unit, options_for_select(["Hour","Day"], "Day")  %>
+	<%= f.label :billing_rate, "Billing Rate" %>
+	<%= f.text_field :billing_rate %>
+	<%= f.submit "Record", class: "btn btn-large btn-primary " %>
+</div>
+<% end %>
+

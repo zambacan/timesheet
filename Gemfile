@@ -7,7 +7,9 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
- 
+gem 'nested_form', '0.3.2'
+gem 'jquery-rails', '2.2.1'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
@@ -35,10 +37,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   # gem 'uglifier', '>= 1.0.3'
   gem 'uglifier', '>= 1.2.3'
-   gem 'jquery-rails', '2.2.1'
-  gem 'nested_form', '0.3.2'
-  
- 
+
 end
 group :test do
   gem 'capybara', '1.1.2'
