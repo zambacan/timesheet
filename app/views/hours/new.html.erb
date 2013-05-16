@@ -1,32 +1,53 @@
 <%= provide(:title, "New hours") %>
 <% currently_at("Timesheets") %>
 <h1>New hours</h1>
+<div id="calendar"></div>
 
-<%= form_for(@hour) do |f| %>
-<div class="span12">
-	<%= f.label :project_name, "Project Name" %>
 
-<%= f.text_field :project_name, :autocomplete => :off , :data => {:provide => "typeahead", :source => Project.order(:project_name).map(&:project_name) } %>
 
-	<%= f.label :activity_type, "Activity Type" %>
-	<%= f.select :activity_type, options_for_select(["Analysis","Business Development","Consulting","Coding","Design", "Documentation", "Meetings", "Testing", "Training"], "Consulting")  %>
-	<%= f.label :description, "Description" %>
-	<%= f.text_field :description %>
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Record Time Dude</h3>
 	</div>
-<div class="span4">
-	<%= f.label :performed_on, "Performed On" %>
-	<%= f.text_field :performed_on %>
-	<%= f.label :start_time, "Start Time" %>
-	<%= f.text_field :start_time %>
-	<%= f.label :finish_time, "Finish Time" %>
-	<%= f.text_field :finish_time %>
+	<div class="modal-body">
+		<%= form_for(@hour) do |f| %>
 
+	<div class="span12">
+				
+			<%= f.label :project_name, "Project Name" %>
 
-	<%= f.label :billing_unit, "Billing Unit" %>
-	<%= f.select :billing_unit, options_for_select(["Hour","Day"], "Day")  %>
-	<%= f.label :billing_rate, "Billing Rate" %>
-	<%= f.text_field :billing_rate %>
-	<%= f.submit "Record", class: "btn btn-large btn-primary " %>
+			<%= f.text_field :project_name, :autocomplete => :off , :data => {:provide => "typeahead", :source => Project.order(:project_name).map(&:project_name) } %>
+
+			<%= f.label :activity_type, "Activity Type" %>
+			<%= f.select :activity_type, options_for_select(["Analysis","Business Development","Consulting","Coding","Design", "Documentation", "Meetings", "Testing", "Training"], "Consulting")  %>
+			<%= f.label :description, "Description" %>
+			<%= f.text_field :description, :id => "description"%>
+		</div>
+		<div class="span4">
+		
+			<div class="bootstrap-timepicker ">
+					<%= f.label :performed_on, "Date" %>
+					<%= f.text_field :performed_on %>
+				<%= f.label :start_time, "Start Time" %>
+				<%= f.text_field :start_time, :class => "timepicker input-small"  %>
+				<%= f.label :finish_time, "Finish Time" %>
+				<%= f.text_field :finish_time, :class => "timepicker input-small", :id => "finishTime" %>
+			</div>
+
+		
+
+			<%= f.label :billing_unit, "Billing Unit" %>
+			<%= f.select :billing_unit, options_for_select(["Hour","Day"], "Day")  %>
+			<%= f.label :billing_rate, "Billing Rate" %>
+			<%= f.text_field :billing_rate %>
+
+		</div>
+		<% end %>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-primary">Save changes</button>
+	</div>
 </div>
-<% end %>
-

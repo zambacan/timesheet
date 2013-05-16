@@ -14,18 +14,18 @@
 //= require jquery_nested_form
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-timepicker
 //= require_tree .
 
 
-   
 $(document).ready(function() {
 
-	var date = new Date();
-	var d = date.getDate();
-	var m = date.getMonth();
-	var y = date.getFullYear();
+	var date       = new Date();
+	var d          = date.getDate();
+	var m          = date.getMonth();
+	var y          = date.getFullYear();
 	
-	var calendar = $('#calendar').fullCalendar({
+	var calendar   = $('#calendar').fullCalendar({
 		header: {
 			left: 'prev,next today',
 			center: 'title',
@@ -37,7 +37,13 @@ $(document).ready(function() {
 		selectable: true,
 		selectHelper: true,
 		select: function(start, end, allDay) {
-			var title = prompt('Event Title:');
+			$('#myModal').modal('show');
+		    $('#myModal').on('shown', function() {
+			var d=new Date();
+			var ft = ohBaby(d);
+		        $("#finishTime").val(ft);
+		    })
+			 // var title = prompt('Raify Title:');
 			if (title) {
 				calendar.fullCalendar('renderEvent',
 					{
@@ -51,11 +57,26 @@ $(document).ready(function() {
 			}
 			calendar.fullCalendar('unselect');
 		},
+				
 		
 	});
-	
+	$('.timepicker').timepicker({
+		minuteStep: 15,
+		showInputs: true,
+		disableFocus: true
+	});
 });
+ 	 function ohBaby(somint) {
+		alert(somint);
+	    sec_numb    = somint.getSeconds();
+	    var hours   = somint.getHours();
+	    var minutes = somint.getMinutes();
 
+	    if (hours   < 10) {hours   = "0"+hours;}
+	    if (minutes < 10) {minutes = "0"+minutes;}
+	    var time    = hours+':'+minutes;
+	    return time;
+	}
 function updateEvent(the_event) {
     $.update(
       "/events/" + the_event.id,
@@ -67,6 +88,8 @@ function updateEvent(the_event) {
       },
       function (reponse) { alert('successfully updated task.'); }
     );
+
+
 };
 
 
