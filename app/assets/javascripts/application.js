@@ -19,11 +19,16 @@
 
 
 $(document).ready(function() {
+	$('.timepicker').timepicker({
+	     minuteStep: 15,
+	     showInputs: false,
+	     disableFocus: true
+	 });
 
-	var date       = new Date();
-	var d          = date.getDate();
-	var m          = date.getMonth();
-	var y          = date.getFullYear();
+	// var date       = new Date();
+	// var d          = date.getDate();
+	// var m          = date.getMonth();
+	// var y          = date.getFullYear();
 	
 	var calendar   = $('#calendar').fullCalendar({
 		header: {
@@ -39,11 +44,16 @@ $(document).ready(function() {
 		select: function(start, end, allDay) {
 			$('#myModal').modal('show');
 		    $('#myModal').on('shown', function() {
-			var d=new Date();
-			var ft = ohBaby(d);
-		        $("#finishTime").val(ft);
+			var st = formatTime(start);
+			var ft = formatTime(end);
+
+		         $("#startTime").val(st);
+		         $("#finishTime").val(ft);
+		         $("#performedOn").val(start);
+		        // 		
 		    })
-			 // var title = prompt('Raify Title:');
+			  // var title = "brill"
+			// prompt('Raify Title:');
 			if (title) {
 				calendar.fullCalendar('renderEvent',
 					{
@@ -60,21 +70,30 @@ $(document).ready(function() {
 				
 		
 	});
-	$('.timepicker').timepicker({
-		minuteStep: 15,
-		showInputs: true,
-		disableFocus: true
-	});
-});
- 	 function ohBaby(somint) {
-		alert(somint);
-	    sec_numb    = somint.getSeconds();
-	    var hours   = somint.getHours();
-	    var minutes = somint.getMinutes();
 
+
+});
+
+ 	 function formatTime(givenTime) {
+	    var hours   = givenTime.getHours();
+	    var minutes = givenTime.getMinutes();
+	    if (hours  > 12) {
+			hours   = hours - 12;
+		var ap = ' PM';	
+			}
+			else
+			{
+			var ap=' AM';	
+			}
+	
+	    if (hours   === 0) {
+		hours   = "12";
+		ap=" AM";}
+		if (hours   === 12) {
+		ap=" PM";}
 	    if (hours   < 10) {hours   = "0"+hours;}
 	    if (minutes < 10) {minutes = "0"+minutes;}
-	    var time    = hours+':'+minutes;
+	    var time    = hours+':'+minutes+ap;
 	    return time;
 	}
 function updateEvent(the_event) {
