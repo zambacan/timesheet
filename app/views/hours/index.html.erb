@@ -1,0 +1,10 @@
+<% @hours.each do |hour| %>
+<tr>
+	<td><%= hour.description %></td>
+	<td><%= hour.project_name %> </td>
+	<td><%= hour.start_time %></td>
+	<td><%= hour.finish_time %></td>
+	<td><%= hour.performed_on %></td>
+	   <td><%= link_to 'Delete', hour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
+<% end %>

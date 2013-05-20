@@ -7,49 +7,42 @@
 <div id="calendar"></div>
 
 
-
-<!-- Modal -->
-
-
+	<%= form_for(@hour) do |f| %>
  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<%= form_for(@hour) do |f| %>
+	
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="myModalLabel">Record Time Dude</h3>
+		<h3 id="myModalLabel">Record Time</h3>
 	</div>
 	<div class="modal-body"> 
 
-		<!-- <div class="span12"> -->
 		
 			<%= f.label :project_name, "Project Name" %>
 			<%= f.text_field :project_name, :autocomplete => :off , :data => {:provide => "typeahead", :source => 					Project.order(:project_name).map(&:project_name) } %>
+				<%= f.label :performed_on, "Date" %>
+				<%= f.text_field :performed_on, :id => "performedOn" %>
+
+				<div class="bootstrap-timepicker">
+					<%= f.label :start_time, "Start Time" %>	
+					<%= f.text_field :start_time, :class => "timepicker input-small", :id => "startTime"  %>
+					<%= f.label :finish_time, "Finish Time" %>	
+					<%= f.text_field :finish_time, :class => "timepicker input-small", :id => "finishTime"  %>
+				</div>
 			<%= f.label :activity_type, "Activity Type" %>
 			<%= f.select :activity_type, options_for_select(["Analysis","Business Development","Consulting","Coding","Design", "Documentation", "Meetings", "Testing", "Training"], "Consulting")  %>
 			<%= f.label :description, "Description" %>
 			<%= f.text_field :description, :id => "description"%>
-		<!-- </div> -->
-		<!-- <div class="span4"> -->
-
-
-			<%= f.label :performed_on, "Date" %>
-			<%= f.text_field :performed_on, :id => "performedOn" %>
-
-			<div class="bootstrap-timepicker pull-left ">
-						<%= f.label :start_time, "Start Time" %>	
-				<%= f.text_field :start_time, :class => "timepicker input-small", :id => "startTime"  %>
-						<%= f.label :finish_time, "Finish Time" %>	
-				<%= f.text_field :finish_time, :class => "timepicker input-small", :id => "finishTime"  %>
-			
-			</div>
-		
-
 	
-			
-		<!-- </div> -->
 
-	</div>
+
+		
+		
+	</div> 	<!-- this is the end of the body -->
 	 <div class="modal-footer">
+
 		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		<%= f.submit "Submit", :class => "btn btn-primary", :disable_with => 'Submiting...' %>
+			<%= f.submit "Submit", :class => 'btn btn-primary' %>
 	</div>
+	
+</div>
 	<% end %>
