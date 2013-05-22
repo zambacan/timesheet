@@ -11,16 +11,17 @@ class HoursController < ApplicationController
   end
   
   def create
-    @hours = Hour.new(params[:hour])
+    @hour = Hour.new(params[:hour])
 
     respond_to do |format|
-      if @hours.save
+      if @hour.save
         # flash[:success] = "Timesheet updated"
         format.html { redirect_to hours_path, notice: 'Timesheet was successfully updated.' }
-        format.json { render json: @hours, status: :created, location: @project }
+        format.json { render json: @hour, status: :created, location: @hour }
       else
+         # format.html { redirect_to hours_path, notice: 'Timesheet was NOT updated.' }
         format.html { render action: "new"}
-        format.json { render json: @hours.errors, status: :unprocessable_entity }
+        format.json { render json: @hour.errors, status: :unprocessable_entity }
       end
     end
   end

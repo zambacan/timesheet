@@ -24,7 +24,8 @@ class Hour < ActiveRecord::Base
 # activity_types include: consulting, meetings, coding, testing, business development
 # billing_status include: unbilled, billed, non-billable
 # billing_unit includes: hours, days, fixed-price
-
+validates :description, presence: true 
+validates :project_name, presence: true 
 def project_name
   project.try(:project_name)
 end

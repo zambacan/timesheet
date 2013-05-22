@@ -1,7 +1,7 @@
 <%= provide(:title, "New Project") %>
 <% currently_at "Projects" %>
 <h1>New Project</h1>
-<%= form_for(@project) do |f| %>
+<%= form_for @project, :validate => true do |f| %>
 
 	<%= f.label :client_name %>
 
