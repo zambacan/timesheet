@@ -5,7 +5,7 @@ Timesheet::Application.routes.draw do
    resources :contacts
  resources :projects
  resources :hours
-
+match "/blog" => redirect("/blog/")
  # dont quite understand why the following actions are ok but show and destroy cause problems
  resources :contacts , only: [ :new, :create]
  resources :sessions, only: [:new, :create, :destroy]
